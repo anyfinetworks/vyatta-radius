@@ -30,14 +30,19 @@ functionality:
 
             interface <txt: INTERACE NAME>
 
-            users
-                peap-mschapv2 <txt: IDENTITY>
-                    password <txt: PASSWORD>
+            client <txt: RADIUS CLIENT NAME>
+                ip-filter <ipnet>
+                secret <txt: RADIUS SECRET>
 
-                sim <txt: IDENTITY>
-                    triplet <txt: SIM TRIPLET>
-                    triplet <txt: SIM TRIPLET>
-                    triplet <txt: SIM TRIPLET>
+            user
+                local
+                    peap-mschapv2 <txt: IDENTITY>
+                        password <txt: PASSWORD>
+
+                    sim <txt: IDENTITY>
+                        triplet <txt: SIM TRIPLET>
+                        triplet <txt: SIM TRIPLET>
+                        triplet <txt: SIM TRIPLET>
 
 # Operational Commands
 
