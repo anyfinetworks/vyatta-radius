@@ -1,16 +1,13 @@
 This package was debianized by Daniil Baturin <daniil@baturin.org> on
-Sat, 17 Aug 2013.
-
-It's original content from the GIT repository 
-   <https://github.com/SO3Group/vyatta-dummy>
+Mon, 24 Feb 2014.
 
 Upstream Author: 
 
-    <maintainers@so3group.net>
+    <eng@anyfi.net>
 
 Copyright: 
 
-    Copyright (C) 2013 SO3 Group, Inc.
+    Copyright (C) 2013 AnyFi Networks
     All Rights Reserved.
 
 License:

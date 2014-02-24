@@ -1,0 +1,4 @@
+multi:
+type: txt
+help: Interface to listen on
+allowed: ${vyatta_sbindir}/vyatta-interfaces.pl --show all

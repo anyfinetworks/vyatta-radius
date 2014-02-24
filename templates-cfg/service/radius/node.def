@@ -1,0 +1,2 @@
+help: RADIUS server settings
+end: ${vyatta_sbindir}/vyatta-hostapd-radius.pl

@@ -1,16 +1,17 @@
-Source: vyatta-dummy
+Source: vyatta-radius
 Section: contrib/net
 Priority: extra
-Maintainer: SO3 Group <maintainers@so3group.net>
+Maintainer: AnyFi Networks <eng@anyfi.net>
 Standards-Version: 3.9.1
 Build-Depends: debhelper (>= 5), autotools-dev, autoconf
 
-Package: vyatta-dummy
+Package: vyatta-radius
 Architecture: all
 Depends: vyatta-cfg-system,
  vyatta-cfg,
  vyatta-op,
+ hostapd,
  ${misc:Depends}
-Replaces: vyatta-dummy
+Replaces: vyatta-radius
 Description: Vyatta package skeleton
  Vyatta package skeleton
