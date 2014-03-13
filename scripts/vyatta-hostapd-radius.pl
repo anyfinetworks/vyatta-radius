@@ -1,6 +1,6 @@
 #!/usr/bin/perl
 #
-# vyatta-hostpad-radius.pl: crontab generator
+# vyatta-hostpad-radius.pl: hostapd-based RADIUS server config generator
 #
 # Maintainer: Daniil Baturin <daniil@baturin.org>
 #
