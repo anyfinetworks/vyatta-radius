@@ -63,6 +63,13 @@ sub setup_tls
     return($str);
 }
 
+sub setup_identity_name
+{
+    my $name = shift;
+    my $str = "server_id = $name \n";
+    return($str);
+}
+
 sub generate_config
 {
     my $config = shift;
@@ -89,6 +96,12 @@ sub generate_config
     foreach my $intf (@interfaces)
     {
         $config_str .= setup_interface($intf);
+    }
+
+    my $identity_name = $config->returnValue("identity name");
+    if( defined($identity_name) )
+    {
+        $config_str = setup_identity_name($identity_name);
     }
 
     return($config_str);
