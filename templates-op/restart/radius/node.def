@@ -1,0 +1,2 @@
+help: Restart RADIUS server
+run: sudo /etc/init.d/hostapd restart
