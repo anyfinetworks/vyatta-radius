@@ -123,7 +123,7 @@ sub generate_config
     my $identity_name = $config->returnValue("identity name");
     if( defined($identity_name) )
     {
-        $config_str = setup_identity_name($identity_name);
+        $config_str .= setup_identity_name($identity_name);
     }
 
     return($config_str);
