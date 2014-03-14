@@ -70,6 +70,28 @@ sub setup_identity_name
     return($str);
 }
 
+sub setup_clients_file
+{
+    my $file = "/etc/hostapd_radius_clients";
+    return("radius_server_clients=$file");
+}
+
+sub setup_clients
+{
+    my $config = shift;
+    my $clients_str = "";
+
+    $config->setLevel("service radius");
+    my @clients = $config->listNodes("client");
+
+    foreach my $client (@clients)
+    {
+        my $ip_filter = $config->returnValue("client $client ip-filter");
+        my $secret = $config->returnValue("client $client secret");
+        $clients_str .= "$ip_filter $secret \n";
+    }
+}
+
 sub generate_config
 {
     my $config = shift;
@@ -116,4 +138,5 @@ print $config_header;
 print generate_config($config);
 #close(HANDLE);
 
+print setup_clients($config);
 
