@@ -90,6 +90,8 @@ sub setup_clients
         my $secret = $config->returnValue("client $client secret");
         $clients_str .= "$ip_filter $secret \n";
     }
+
+    return($clients_str);
 }
 
 sub generate_config
