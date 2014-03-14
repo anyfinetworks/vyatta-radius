@@ -84,7 +84,7 @@ sub generate_config
     my $key = $config->returnValue("identity private-key");
     if( !defined($cert) || !defined($ca) || !defined($key) )
     {
-        error("Must define all of ca-certificate, certificat, and private-key");
+        error("Must define all of ca-certificate, certificate, and private-key");
     }
 
     my @interfaces = $config->returnValues("interface");
