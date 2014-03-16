@@ -1,4 +1,4 @@
 tag:
 type: txt
-help: RADIUS server client settings
+help: Authorized clients
 val_help: Client name

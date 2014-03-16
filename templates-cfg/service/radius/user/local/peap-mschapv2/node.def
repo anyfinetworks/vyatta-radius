@@ -1,0 +1,4 @@
+tag:
+type: txt
+help: EAP-PEAP MS-CHAP-v2 authenticated user
+val_help: User name

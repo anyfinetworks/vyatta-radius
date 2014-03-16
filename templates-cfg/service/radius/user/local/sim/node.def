@@ -1,0 +1,4 @@
+tag:
+type: txt
+help: EAP-SIM authenticated user
+val_help: International Mobile Subscriber Identity (IMSI)
