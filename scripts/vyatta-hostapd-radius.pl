@@ -94,6 +94,28 @@ sub setup_clients
     return($clients_str);
 }
 
+sub setup_chap_users
+{
+    my $config = shift;
+    my $users_str = "";
+
+    $config->setLevel("service radius user local");
+    my @users = $config->listNodes("peap-mschap2");
+
+    foreach my $user (@users)
+    {
+        my $password = $config->returnValue("peap-mschap2 $user");
+        if( !defined($password) )
+        {
+            error("Must define password for user $user");
+        }
+
+        $users_str .= qq{"$user" MSCHAPV2 "$password" [2]\n};
+    }
+
+    return($users_str);
+}
+
 sub generate_config
 {
     my $config = shift;
@@ -145,3 +167,4 @@ print generate_config($config);
 
 print setup_clients($config);
 
+print setup_chap_users($config);
