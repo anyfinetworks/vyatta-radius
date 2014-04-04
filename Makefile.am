@@ -1,5 +1,6 @@
 cfgdir = $(datadir)/vyatta-cfg/templates
 opdir = $(datadir)/vyatta-op/templates
+sharedir = $(datadir)/hostapd-radius
 curverdir = $(sysconfdir)/config-migrate/current
 bin_sudo_usersdir = $(bindir)/sudo-users
 
@@ -11,6 +12,8 @@ sbin_SCRIPTS = scripts/vyatta-hostapd-radius.pl
 bin_sudo_users_SCRIPTS =
 
 curver_DATA = 
+
+share_DATA = certs/ca.pem certs/server-key.pem certs/server.pem
 
 cpiop = find  . ! -regex '\(.*~\|.*\.bak\|.*\.swp\|.*\#.*\#\)' -print0 | \
   cpio -0pd
