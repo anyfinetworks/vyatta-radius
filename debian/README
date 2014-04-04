@@ -1,6 +1,7 @@
 The Debian Package vyatta-radius
--------------------------------
+--------------------------------
 
-This package contains templates and scripts for standalone RADIUS server.
+This package contains templates and scripts for operating hostapd as a
+standalone RADIUS server.
 
  -- Daniil Baturin <daniil@baturin.org>  Mon, 24 Feb 2014 00:00:00 -0700

@@ -3,11 +3,11 @@ Mon, 24 Feb 2014.
 
 Upstream Author: 
 
-    <eng@anyfi.net>
+    Anyfi Networks <eng@anyfinetworks.com>
 
 Copyright: 
 
-    Copyright (C) 2013 AnyFi Networks
+    Copyright (C) 2013-2014 Anyfi Networks AB.
     All Rights Reserved.
 
 License:
@@ -29,5 +29,5 @@ You can also obtain it by writing to the Free Software Foundation,
 Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston,
 MA 02110-1301, USA.
 
-The Debian packaging is (C) 2013, Daniil Baturin <daniil@baturin.org> and
-is licensed under the GPL, see above.
+The Debian packaging is copyright (C) 2013-2014 Anyfi Networks AB and
+licensed under the GPL, see above.
