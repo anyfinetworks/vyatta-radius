@@ -59,14 +59,12 @@ sub basic_setup
 
 sub setup_identity
 {
-    my $name = shift;
     my $ca = shift;
     my $cert = shift;
     my $key = shift;
 
     my $str = "";
 
-    #$str .= "server_id=$name\n";
     $str .= "ca_cert=$ca\n";
     $str .= "server_cert=$cert\n";
     $str .= "private_key=$key\n";
@@ -85,7 +83,6 @@ sub generate_config
 
     # identity:
 
-    my $name = $config->returnValue("identity name");
     my $ca   = $config->returnValue("identity ca-certificate");
     my $cert = $config->returnValue("identity certificate");
     my $key  = $config->returnValue("identity private-key");
@@ -101,7 +98,7 @@ sub generate_config
         error("All (or none) of ca-certificate, certificate and private-key must be defined.");
     }
 
-    $config_str .= setup_identity($name, $ca, $cert, $key);
+    $config_str .= setup_identity($ca, $cert, $key);
 
     # interface:
 
