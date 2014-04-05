@@ -1,2 +1,6 @@
 help: Restart RADIUS server
-run: sudo /etc/init.d/hostapd restart
+run: if [ -f /var/run/hostapd-radius.pid ]; then
+         sudo kill -TERM $(sudo cat /var/run/hostapd-radius.pid)
+     fi
+
+     sudo /usr/sbin/hostapd /etc/hostapd-radius/hostapd.conf -P /var/run/hostapd-radius.pid -B
