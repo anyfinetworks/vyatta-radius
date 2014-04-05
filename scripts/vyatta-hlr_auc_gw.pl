@@ -1,12 +1,12 @@
 #!/usr/bin/perl
 #
-# vyatta-hlr_auc_gw.pl: HLR/AuC testing gateway for SIM authentication.
+# vyatta-hlr_auc_gw.pl: HLR/AuC testing gateway for SIM authentication
 #
-# Based on hlr_auc_gw.c copyright (c) 2005-2007, 2012, Jouni Malinen <j@w1.fi>.
+# Based on hlr_auc_gw.c copyright (C) 2005-2007, 2012, Jouni Malinen <j@w1.fi>.
 #
 # Maintainer: Anyfi Networks <eng@anyfinetworks.com>
 #
-# Copyright (C) 2014 Anyfi Networks AB.
+# Copyright (C) 2014 Anyfi Networks AB. All Rights Reserved.
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License version 2 as
