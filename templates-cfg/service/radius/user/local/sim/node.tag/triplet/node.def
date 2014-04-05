@@ -1,3 +1,5 @@
 multi:
 type: txt
 help: SIM triplet (Kc:SRES:RAND)
+val_help: <hhhhhhhhhhhhhhhh:hhhhhhhh:HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH>; Kc:SRES:RAND
+syntax:expression: pattern $VAR(@) "^[0-9a-fA-F]{16}:[0-9a-fA-F]{8}:[0-9A-Fa-f]{32}$"
