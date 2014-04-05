@@ -7,7 +7,7 @@ bin_sudo_usersdir = $(bindir)/sudo-users
 vprefix = /opt/vyatta
 vsbindir = $(vprefix)/sbin
 
-sbin_SCRIPTS = scripts/vyatta-hostapd-radius.pl
+sbin_SCRIPTS = scripts/vyatta-hostapd-radius.pl scripts/vyatta-hlr_auc_gw.pl
 
 bin_sudo_users_SCRIPTS =
 

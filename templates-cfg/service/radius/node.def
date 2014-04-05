@@ -1,18 +1,21 @@
 help: RADIUS server settings
 end: if [ ${COMMIT_ACTION} == DELETE ]; then
          sudo kill -TERM $(sudo cat /var/run/hostapd-radius.pid) 
+         sudo kill -TERM $(sudo cat /var/run/vyatta-hlr_auc_gw.pid) 
          sudo rm -rf /etc/hostapd-radius/
      else
-         if [ -f /var/run/hostapd-radius.pid ]; then
-             sudo kill -TERM $(sudo cat /var/run/hostapd-radius.pid)
-         fi
-
          sudo mkdir -p /etc/hostapd-radius
          sudo ${vyatta_sbindir}/vyatta-hostapd-radius.pl --config-dir=/etc/hostapd-radius || exit 1
+
          if [ -f /var/run/hostapd-radius.pid ]; then
              sudo kill -TERM $(sudo cat /var/run/hostapd-radius.pid)
          fi
+         if [ -f /var/run/vyatta-hlr_auc_gw.pid ]; then
+             sudo kill -TERM $(sudo cat /var/run/vyatta-hlr_auc_gw.pid)
+         fi
 
+         sudo ${vyatta_sbindir}/vyatta-hlr_auc_gw.pl \
+                 --config-dir=/etc/hostapd-radius --pid-file=/var/run/vyatta-hlr_auc_gw.pid
          sudo /usr/sbin/hostapd /etc/hostapd-radius/hostapd.conf -P /var/run/hostapd-radius.pid -B
      fi
 
