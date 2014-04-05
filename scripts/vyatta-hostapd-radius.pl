@@ -52,6 +52,7 @@ sub basic_setup
     $str .= "eap_server=1\n";
     $str .= "radius_server_clients=$config_dir/radius_clients\n";
     $str .= "eap_user_file=$config_dir/eap_users\n";
+    $str .= "eap_sim_db=unix:$config_dir/hlr_auc_gw.sock\n";
     $str .= "radius_server_auth_port=1812\n";
 
     return($str);
