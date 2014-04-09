@@ -27,8 +27,8 @@ end: if [ ${COMMIT_ACTION} == DELETE ]; then
 
              echo "."
          fi
-	 
-	       echo -n "Starting radius server:"
+
+         echo -n "Starting radius server:"
          sudo ${vyatta_sbindir}/vyatta-hlr_auc_gw.pl \
                  --config-dir=/etc/hostapd-radius --pid-file=/var/run/vyatta-hlr_auc_gw.pid
          echo -n " vyatta-hlr_auc_gw.pl"
