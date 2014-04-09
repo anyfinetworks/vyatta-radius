@@ -30,9 +30,9 @@ end: if [ ${COMMIT_ACTION} == DELETE ]; then
 
          echo -n "Starting radius server:"
          sudo ${vyatta_sbindir}/vyatta-hlr_auc_gw.pl \
-                 --config-dir=/etc/hostapd-radius --pid-file=/var/run/vyatta-hlr_auc_gw.pid
+                 --config-dir=/etc/hostapd-radius --pid-file=/var/run/vyatta-hlr_auc_gw.pid || exit 1
          echo -n " vyatta-hlr_auc_gw.pl"
-         sudo /usr/sbin/hostapd /etc/hostapd-radius/hostapd.conf -P /var/run/hostapd-radius.pid -B
+         sudo /usr/sbin/hostapd /etc/hostapd-radius/hostapd.conf -P /var/run/hostapd-radius.pid -B || exit 1
          echo -n " hostapd"
 
          echo "."
