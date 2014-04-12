@@ -1,2 +1,2 @@
 type: txt
-help: Server certificate file
+help: Server certificate file path [REQUIRED]

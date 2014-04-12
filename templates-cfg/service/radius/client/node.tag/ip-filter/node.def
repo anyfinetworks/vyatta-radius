@@ -1,2 +1,4 @@
 type: txt
-help: Client allowed IP address expression
+help: Allowed IP addresses [REQUIRED]
+val_help: ipv4net; Allow this subnet
+val_help: ipv4; Allow this ip address only

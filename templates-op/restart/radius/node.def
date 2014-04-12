@@ -1,6 +1,9 @@
-help: Restart RADIUS server
-run: if [ -f /var/run/hostapd-radius.pid ]; then
-         sudo kill -TERM $(sudo cat /var/run/hostapd-radius.pid)
-     fi
+help: Restart the radius server
+run:
+    echo -n "Stopping radius server:"
+    sudo kill -TERM $(sudo cat /var/run/hostapd-radius.pid 2> /dev/null) 2> /dev/null && sleep 1 && echo -n " hostapd"
+    echo "."
 
-     sudo /usr/sbin/hostapd /etc/hostapd-radius/hostapd.conf -P /var/run/hostapd-radius.pid -B
+    echo -n "Starting radius server:"
+    sudo /usr/sbin/hostapd /etc/hostapd-radius/hostapd.conf -P /var/run/hostapd-radius.pid -B > /dev/null && echo -n " hostapd"
+    echo "."

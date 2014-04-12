@@ -1,4 +1,4 @@
-help: RADIUS server settings
+help: RADIUS server
 end: if [ ${COMMIT_ACTION} == DELETE ]; then     
          echo -n "Stopping radius server:"      
 

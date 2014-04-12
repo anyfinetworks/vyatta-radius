@@ -1,4 +1,4 @@
 tag:
 type: txt
-help: Authorized clients
+help: Authorized clients [REQUIRED]
 val_help: Client name
