@@ -41,7 +41,8 @@ my $config_key = "/opt/vyatta/share/hostapd-radius/server-key.pem";
 sub error
 {
     my $msg = shift;
-    die("Error: $msg");
+    print STDERR "Error configuring radius server: $msg\n";
+    exit(1);
 }
 
 sub basic_setup
@@ -96,7 +97,7 @@ sub generate_config
     }
     elsif( defined($ca) || defined($cert) || defined($key) )
     {
-        error("All (or none) of ca-certificate, certificate and private-key must be defined.");
+        error("must configure ca-certificate, certificate and private-key.");
     }
 
     $config_str .= setup_identity($ca, $cert, $key);
@@ -106,7 +107,7 @@ sub generate_config
     my @interfaces = $config->returnValues("interface");
     if( !@interfaces )
     {
-        error("Must specify an interface to listen on");
+        error("must specify at least one interface to listen on.");
     }
 
     foreach my $intf (@interfaces)
@@ -134,6 +135,8 @@ sub generate_clients
 
         $clients_str .= "$ip_filter $secret\n";
     }
+
+    error("at least one client required.") if ($clients_str eq "");
 
     return($clients_str);
 }

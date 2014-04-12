@@ -1,2 +1,2 @@
 type: txt
-help: Server private key file
+help: Server private key file path [REQUIRED]
