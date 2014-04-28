@@ -1,7 +1,7 @@
 Source: vyatta-radius
 Section: contrib/net
 Priority: extra
-Maintainer: AnyFi Networks <eng@anyfi.net>
+Maintainer: Anyfi Networks <eng@anyfinetwork.com>
 Standards-Version: 3.9.1
 Build-Depends: debhelper (>= 5), autotools-dev, autoconf
 
@@ -13,5 +13,6 @@ Depends: vyatta-cfg-system,
  hostapd,
  ${misc:Depends}
 Replaces: vyatta-radius
-Description: Vyatta package skeleton
- Vyatta package skeleton
+Description: Vyatta CLI for hostapd as RADIUS server
+ Vyatta CLI integration for hostapd as a standalone RADIUS server,
+ providing EAP authentication methods such as EAP-PEAP and EAP-SIM.
