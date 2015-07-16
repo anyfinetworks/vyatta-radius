@@ -1,0 +1,4 @@
+tag:
+type: ipv4net
+help: Service termination point ip subnet [REQUIRED]
+val_help: ipv4net; Allow this subnet

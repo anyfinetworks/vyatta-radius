@@ -1,0 +1,12 @@
+body {
+    margin: 40px;
+}
+
+h1, h2 {
+    font-weight: normal;
+}
+
+table.info {
+    width: 300px;
+    font-size: smaller;
+}

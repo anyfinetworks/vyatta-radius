@@ -11,6 +11,13 @@ Depends: vyatta-cfg-system,
  vyatta-cfg,
  vyatta-op,
  hostapd,
+ lighttpd,
+ liblinux-inotify2-perl,
+ libfile-touch-perl,
+ libnet-cidr-perl,
+ libnet-radius-perl,
+ libformat-human-bytes-perl,
+ php5-cgi,
  ${misc:Depends}
 Replaces: vyatta-radius
 Description: Vyatta CLI for hostapd as RADIUS server

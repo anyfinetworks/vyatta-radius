@@ -1,0 +1,4 @@
+type: u32
+help: VLAN tag number
+val_help: <1-4094>; VLAN tag number
+syntax:expression: $VAR(@) >= 1 && $VAR(@) <= 4094; "Value out of range"

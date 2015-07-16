@@ -1,0 +1,4 @@
+tag:
+type: txt
+help: HTTP portal authenticated user
+val_help: User name

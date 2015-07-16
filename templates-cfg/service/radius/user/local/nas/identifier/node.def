@@ -1,0 +1,4 @@
+tag:
+type: txt
+help: RADIUS attribute NAS-Identifier value
+val_help: NAS identifier [REQUIRED]

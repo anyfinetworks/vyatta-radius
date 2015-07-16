@@ -1,13 +1,14 @@
 help: RADIUS server
 end: if [ ${COMMIT_ACTION} == DELETE ]; then     
          echo -n "Stopping radius server:"      
-
-         sudo kill -TERM $(sudo cat /var/run/hostapd-radius.pid) 
+         sudo kill -TERM $(sudo cat /var/run/vyatta-radius.pid)
+         sudo rm -rf /var/radius/
+         echo -n " vyatta-radius.pl"
+         sudo kill -TERM $(sudo cat /var/run/hostapd-radius.pid)
          echo -n " hostapd"
          sudo kill -TERM $(sudo cat /var/run/vyatta-hlr_auc_gw.pid) 
          echo -n " vyatta-hlr_auc_gw.pl"
          sudo rm -rf /etc/hostapd-radius/
-
          echo "."
      else
          sudo mkdir -p /etc/hostapd-radius
@@ -16,6 +17,10 @@ end: if [ ${COMMIT_ACTION} == DELETE ]; then
          if [ -f /var/run/hostapd-radius.pid ] || [ -f /var/run/vyatta-hlr_auc_gw.pid ]; then
              echo -n "Stopping radius server:"
 
+             if [ -f /var/run/vyatta-radius.pid ]; then
+                 sudo kill -TERM $(sudo cat /var/run/vyatta-radius.pid)
+                 echo -n " vyatta-radius.pl"
+             fi
              if [ -f /var/run/hostapd-radius.pid ]; then
                  sudo kill -TERM $(sudo cat /var/run/hostapd-radius.pid)
                  echo -n " hostapd"
@@ -34,6 +39,8 @@ end: if [ ${COMMIT_ACTION} == DELETE ]; then
          echo -n " vyatta-hlr_auc_gw.pl"
          sudo /usr/sbin/hostapd /etc/hostapd-radius/hostapd.conf -P /var/run/hostapd-radius.pid -B || exit 1
          echo -n " hostapd"
+         sudo ${vyatta_sbindir}/vyatta-radius.pl || exit 1;
+         echo -n " vyatta-radius.pl"
 
          echo "."
      fi

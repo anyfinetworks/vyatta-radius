@@ -1,0 +1,5 @@
+type: u32
+help: TCP port number for captive portal HTTP server
+val_help: <1-65535>; TCP port number
+default: 80
+syntax:expression: $VAR(@) >= 1 && $VAR(@) <= 65535; "Value out of range"

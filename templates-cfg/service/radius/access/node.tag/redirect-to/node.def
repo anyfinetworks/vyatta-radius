@@ -1,0 +1,3 @@
+type: txt
+help: Redirect to captive portal
+allowed: cli-shell-api listActiveNodes service radius http-portal

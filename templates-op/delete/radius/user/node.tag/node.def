@@ -1,0 +1,3 @@
+help: Deauthorize a RADIUS user
+run: sudo rm -f /var/radius/sessions/*/$4@*
+     sudo rm -f /var/radius/sessions/.allow/$4@*

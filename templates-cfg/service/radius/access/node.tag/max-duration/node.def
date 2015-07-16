@@ -1,0 +1,3 @@
+type: u32
+help: Maximum session time
+val_help: u32; Time in seconds (s)

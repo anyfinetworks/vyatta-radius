@@ -1,0 +1,2 @@
+help: Show all RADIUS users
+run: find /var/radius/sessions/ -name '[!.]*' -type f -exec /opt/vyatta/sbin/vyatta-radius-info.pl {} \;

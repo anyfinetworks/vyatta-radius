@@ -1,0 +1,26 @@
+tag:
+type: txt
+help: HTTP captive portal settings
+syntax:expression: pattern $VAR(@) "^[0-9AZa-z_\-]\+$"
+
+end:
+     if [ ${COMMIT_ACTION} != SET ]; then
+         echo -n "Stopping captive portal HTTP server:"
+         if [ -f /var/run/lighttpd-$VAR(@).pid ]; then
+             sudo kill -TERM $(sudo cat /var/run/lighttpd-$VAR(@).pid)
+             sudo rm -f /etc/lighttpd-$VAR(@).conf
+             echo -n " lighttpd"
+         fi
+         echo "."
+     fi
+     if [ ${COMMIT_ACTION} != DELETE ]; then
+         # Config file generation
+         sudo /opt/vyatta/sbin/vyatta-lighttpd-portal.pl \
+             --instance=$VAR(@) --config=/etc/lighttpd-$VAR(@).conf \
+	     --pidfile=/var/run/lighttpd-$VAR(@).pid || exit 1;
+         # Start lighttpd
+         echo -n "Starting captive portal HTTP server:"
+         sudo /usr/sbin/lighttpd -f /etc/lighttpd-$VAR(@).conf || exit 1;
+         echo " lighttpd."
+     fi
+

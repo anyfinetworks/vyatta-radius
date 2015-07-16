@@ -1,0 +1,3 @@
+type: u32
+help: Maximum upload data volume
+val_help: u32; Data volume in megabytes (MBs)

@@ -1,0 +1,3 @@
+type: txt
+help: Maximum downlink bandwidth
+val_help: <xx.xx>; Bandwidth in megabits per second (Mbps)

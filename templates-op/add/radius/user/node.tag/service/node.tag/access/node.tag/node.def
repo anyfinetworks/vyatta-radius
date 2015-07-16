@@ -1,0 +1,4 @@
+type: txt
+help: Access class name
+allowed: find /var/radius/sessions -type d -printf '%P\n'
+run: sudo touch /var/radius/sessions/$8/$4@$6

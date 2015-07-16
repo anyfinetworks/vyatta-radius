@@ -1,0 +1,4 @@
+tag:
+type: macaddr
+help: User access authorization for a client MAC address
+val_help: macaddr; MAC address

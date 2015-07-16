@@ -54,7 +54,8 @@ sub basic_setup
     $str .= "radius_server_clients=$config_dir/radius_clients\n";
     $str .= "eap_user_file=$config_dir/eap_users\n";
     $str .= "eap_sim_db=unix:$config_dir/hlr_auc_gw.sock\n";
-    $str .= "radius_server_auth_port=1812\n";
+    $str .= "radius_server_auth_port=1814\n";
+    $str .= "interface=lo\n";
 
     return($str);
 }
@@ -102,19 +103,6 @@ sub generate_config
 
     $config_str .= setup_identity($ca, $cert, $key);
 
-    # interface:
-
-    my @interfaces = $config->returnValues("interface");
-    if( !@interfaces )
-    {
-        error("must specify at least one interface to listen on.");
-    }
-
-    foreach my $intf (@interfaces)
-    {
-        $config_str .= "interface=$intf\n";
-    }
-
     return($config_str);
 }
 
@@ -123,22 +111,16 @@ sub generate_config
 sub generate_clients
 {
     my $config = shift;
-    my $clients_str = "";
 
     $config->setLevel("service radius");
     my @clients = $config->listNodes("client");
 
-    foreach my $client (@clients)
-    {
-        my $ip_filter = $config->returnValue("client $client ip-filter");
-        my $secret = $config->returnValue("client $client secret");
+    error("at least one client required.") if (scalar @clients == 0);
+    error("only one client may be configured.") if (scalar @clients > 1);
 
-        $clients_str .= "$ip_filter $secret\n";
-    }
-
-    error("at least one client required.") if ($clients_str eq "");
-
-    return($clients_str);
+    my $client = $clients[0];
+    my $secret = $config->returnValue("client $client secret");
+    return "127.0.0.0/8 $secret\n";
 }
 
 # eap_users:
