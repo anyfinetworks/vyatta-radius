@@ -16,6 +16,8 @@ Depends: vyatta-cfg-system,
  libfile-touch-perl,
  libnet-cidr-perl,
  libnet-radius-perl,
+ libdigest-hmac-perl,
+ libjson-perl,
  libformat-human-bytes-perl,
  php5-cgi,
  ${misc:Depends}
