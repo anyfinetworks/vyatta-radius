@@ -441,7 +441,8 @@ sub decode_state
     $msg->unset_attr('Proxy-State', $whence);
 
     foreach my $attr (reverse @ATTRIBUTES) {
-	my $value = $msg->attr('Proxy-State') or return;
+	my $value = $msg->attr('Proxy-State');
+	return unless defined $value;
 	$msg->unset_attr('Proxy-State', $value);
 	$msg->set_attr($attr, $value, 1) if $value ne "";
     }
