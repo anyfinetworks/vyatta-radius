@@ -156,6 +156,10 @@ sub configure
 	    push(@attrs, ['NAS-Filter-Rule',
 			  "deny in ip from any to any\0", undef]);
 	}
+	my @ipfilter = $config->returnValues("access $name nas-filter-rule");
+	foreach my $iprule (@ipfilter) {
+	    push(@attrs, ['NAS-Filter-Rule', "$iprule\0", undef]);
+	}
 
 	# Meta attributes
 	$value = $config->returnValue("access $name redirect-to");

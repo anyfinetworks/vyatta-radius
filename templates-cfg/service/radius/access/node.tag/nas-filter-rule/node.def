@@ -1,0 +1,4 @@
+multi:
+type: txt
+help: Custom NAS-Filter-Rule attribute
+val_help: NAS-Filter-Rule attribute value
