@@ -1,0 +1,36 @@
+[ req ]
+distinguished_name		= req_distinguished_name
+
+[ req_distinguished_name ]
+commonName			= Common Name (e.g. server FQDN or YOUR name)
+commonName_max			= 64
+emailAddress			= Email Address
+emailAddress_max		= 64
+
+[ ca_cert ]
+subjectKeyIdentifier		= hash
+authorityKeyIdentifier		= keyid:always,issuer
+basicConstraints		= CA:true
+
+[ ca ]
+default_ca			= ca_default
+
+[ ca_default ]
+certificate			= ca.pem
+private_key			= ca-key.pem
+new_certs_dir			= .
+database			= ./index.txt
+serial				= serial
+name_opt			= ca_default
+cert_opt			= ca_default
+policy				= policy_match
+
+[ policy_match ]
+commonName			= supplied
+emailAddress			= optional
+
+[ usr_cert ]
+subjectKeyIdentifier		= hash
+authorityKeyIdentifier		= keyid,issuer
+basicConstraints		= CA:false
+nsComment			= "OpenSSL Generated Certificate"
