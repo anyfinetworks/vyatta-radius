@@ -183,6 +183,14 @@ sub configure
 	$value = $config->returnValue("access $name max-duration");
 	$rules{'max-duration'} = $value if defined $value;
 
+	$value = $config->returnValue("access $name grant");
+	$rules{'grant'} = $value if defined $value;
+
+	if ($config->exists("access $name deny")) {
+	    info("DENY!!!!");
+	    $rules{'deny'} = 1;
+	}
+
 	@{$rules{'attributes'}} = @attrs;
 	%{$CONFIGURATION{'access'}{$name}} = %rules;
     }
@@ -842,7 +850,12 @@ sub apply_session
     my $access = $CONFIGURATION{'access'}{$sess->{'access'}};
     my $limit = $access->{'max-duration'};
     my $url = $access->{'redirect-url'};
+    my $deny = $access->{'deny'};
 
+    if (defined $deny) {
+	info("Deny is defined");
+	return;
+    }
     if (defined $limit) {
 	$msg->set_attr('Session-Timeout',
 		       max($limit + $sess->{'timestamp'} - time, 1), 1);
@@ -860,6 +873,19 @@ sub apply_session
 	    $msg->set_attr($at->[0], $at->[1], 0);
 	}
     }
+    use_session($key);
+    return $msg
+}
+
+# Apply session restrictions to RADIUS message.
+sub use_session
+{
+    my $key = $_[0];
+    my $sess = $SESSIONS{$key} or return;
+    my $access = $CONFIGURATION{'access'}{$sess->{'access'}};
+    my $whence = sockaddr_in(sockaddr_in($sess->{'port'}));
+    my $grant = $access->{'grant'};
+    create_session($key, $grant, $sess->{'nas'}, $whence) if defined $grant;
 }
 
 ### AUTHORIZATION HANDLERS ################################################
@@ -912,11 +938,10 @@ sub authorize
 	my @cred = parse_radius($msg);
 	my $key = validate_session(find_session(@cred), $MIN_DURATION) ||
 	          config_session(@cred, $dest);
-	if ($key) {
-	    # Add session attributes
+	# Add session attributes
+	if ($key and apply_session($key, $msg)) {
 	    info("AUTHORIZED ", $cred[0], " on ", $cred[2],
 		 " with access ", $SESSIONS{$key}{'access'});
-	    apply_session($key, $msg);
 	    if ($msg->code eq 'Access-Accept') {
 		start_session($key, undef, $dest);
 		write_session($key);
